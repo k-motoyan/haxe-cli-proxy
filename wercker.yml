@@ -3,11 +3,19 @@ build:
   steps:
     - bundle-install
     - script:
-      name: download haxe
-      code: git clone --recursive https://github.com/HaxeFoundation/haxe.git haxe
-    - script:
-      name: compile haxe
-      code: cd haxe && make clean all && make install && cd ../
+      name: install haxe
+      code: |
+        sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
+        CURRENT_PATH=`pwd`
+        mkdir $CURRENT_PATH/bin
+        git clone --recursive https://github.com/HaxeFoundation/haxe.git haxe
+        cd haxe && make && make install
+        cd ../
+        cp /usr/bin/haxe $CURRENT_PATH/bin/ && sudo cp /usr/bin/haxelib $CURRENT_PATH/bin/
+        export PATH=$CURRENT_PATH/bin:$PATH
+        export HAXE_STD_PATH=$CURRENT_PATH/haxe/std
+        export HAXE_LIBRARY_PATH=$CURRENT_PATH/haxe/libs
+        export NEKOPATH=$CURRENT_PATH/haxe/libs/neko
     - script:
       name: rspec
       code: bundle exec rspec
