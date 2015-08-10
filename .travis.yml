@@ -1,3 +1,7 @@
+language: haxe
+haxe:
+  - 3.2.0
+
 script: bundle exec rspec
 
 branches:
@@ -6,8 +10,5 @@ branches:
 
 rvm:
   - 2.2.2
-
-haxe:
-  - 3.2.0
 
 sudo: false
