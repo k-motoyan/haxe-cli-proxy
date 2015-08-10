@@ -22,8 +22,12 @@ build:
           mv /usr/bin/haxe $WERCKER_CACHE_DIR/bin/haxe
           mv /usr/bin/haxelib $WERCKER_CACHE_DIR/bin/haxelib
         fi
+
+        ls -al
     - script:
       name: rspec
       code: |
         export PATH=$WERCKER_CACHE_DIR/bin:$PATH
+        which haxe
+        haxe --help
         bundle exec rspec
