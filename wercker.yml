@@ -10,15 +10,13 @@ build:
     - script:
       name: install haxe
       code: |
-        cd $WERCKER_CACHE_DIR
-
         if [ ! -e $WERCKER_CACHE_DIR/bin ]; then
-          mkdir bin
+          mkdir $WERCKER_CACHE_DIR/bin
         fi
 
         if [ ! -e $WERCKER_CACHE_DIR/haxe ]; then
-          git clone --recursive https://github.com/HaxeFoundation/haxe.git -b 3.2.0 haxe
-          cd haxe && make && make install
+          git clone --recursive https://github.com/HaxeFoundation/haxe.git -b 3.2.0 $WERCKER_CACHE_DIR/haxe
+          cd $WERCKER_CACHE_DIR/haxe && make && make install
           mv /usr/bin/haxe $WERCKER_CACHE_DIR/bin/haxe
           mv /usr/bin/haxelib $WERCKER_CACHE_DIR/bin/haxelib
         fi
