@@ -1,0 +1,14 @@
+ruby:2.2.2
+box: ruby
+build:
+  steps:
+    - bundle-install
+    - script:
+      name: download hax
+      code: wget http://haxe.org/download/file/3.2.0/haxe-3.2.0-linux64.tar.gz && tar xvfz haxe-3.2.0-linux64.tar.gz
+    - script:
+      name: ls
+      code: ls -al haxe-3.2.0-linux64
+    - script:
+      name: rspec
+      code: bundle exec rspec
