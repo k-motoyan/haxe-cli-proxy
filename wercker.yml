@@ -12,5 +12,5 @@ build:
     - script:
       name: rspec
       code: |
-        type haxe
+        haxe --help
         bundle exec rspec
