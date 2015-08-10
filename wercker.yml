@@ -3,11 +3,11 @@ build:
   steps:
     - bundle-install
     - script:
-      name: download hax
-      code: wget http://haxe.org/download/file/3.2.0/haxe-3.2.0-linux64.tar.gz && tar xvfz haxe-3.2.0-linux64.tar.gz
+      name: download haxe
+      code: git clone --recursive https://github.com/HaxeFoundation/haxe.git haxe
     - script:
-      name: ls
-      code: ls -al haxe-3.2.0-linux64
+      name: compile haxe
+      code: cd haxe && make clean all && make install && cd ../
     - script:
       name: rspec
       code: bundle exec rspec
