@@ -1,5 +1,8 @@
 # HaxeCliProxy
 
+[![Code Climate](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/badges/gpa.svg)](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy)
+[![Test Coverage](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/badges/coverage.svg)](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/coverage)
+
 HaxeCliProxy is haxe command line client for ruby.
 
 ## Installation
