@@ -1,5 +1,6 @@
 # HaxeCliProxy
 
+[![wercker status](https://app.wercker.com/status/1e5c4fa372db4a6ca4a0b3c1d78624c3/s/master "wercker status")](https://app.wercker.com/project/bykey/1e5c4fa372db4a6ca4a0b3c1d78624c3)
 [![Code Climate](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/badges/gpa.svg)](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy)
 [![Test Coverage](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/badges/coverage.svg)](https://codeclimate.com/github/k-motoyan/haxe_cli_proxy/coverage)
 
