@@ -3,29 +3,17 @@ build:
   steps:
     - bundle-install
     - script:
-      name: install packages
-      code: |
-        sudo apt-get update
-        sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
+      name: install dependences packages
+      code: sudo apt-get -y install wget
     - script:
       name: install haxe
       code: |
-        if [ ! -e $WERCKER_CACHE_DIR/bin ]; then
-          mkdir $WERCKER_CACHE_DIR/bin
-        fi
-
-        if [ ! -e $WERCKER_CACHE_DIR/haxe ]; then
-          git clone --recursive https://github.com/HaxeFoundation/haxe.git -b 3.2.0 $WERCKER_CACHE_DIR/haxe
-          cd $WERCKER_CACHE_DIR/haxe && make && make install
-          mv /usr/bin/haxe $WERCKER_CACHE_DIR/bin/haxe
-          mv /usr/bin/haxelib $WERCKER_CACHE_DIR/bin/haxelib
-        fi
-
-        ls -al
+        export HAXE_DL_URL=http://haxe.org/website-content/downloads/3.2.0/downloads/haxe-3.2.0-linux64.tar.gz
+        export HAXE_PATH=~/lib/haxe
+        export HAXE_STD_PATH=$HAXE_PATH/std
+        export PATH=$HAXE_PATH:$PATH
+        mkdir -p $HAXE_PATH
+        wget -O - $HAXE_DL_URL | tar xzf - --strip=1 -C $HAXE_PATH
     - script:
       name: rspec
-      code: |
-        export PATH=$WERCKER_CACHE_DIR/bin:$PATH
-        which haxe
-        haxe --help
-        bundle exec rspec
+      code: bundle exec rspec
