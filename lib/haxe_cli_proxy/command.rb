@@ -9,7 +9,7 @@ module HaxeCliProxy
         if RUBY_PLATFORM.downcase =~ /mswin(?!ce)|mingw|cygwin|bccwin/
           system "where #{@@haxe} > nul"
         else
-          system "hash #{@@haxe} 1>& /dev/null"
+          system "hash #{@@haxe} 2> /dev/null"
         end
       end
 
