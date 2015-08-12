@@ -1,9 +1,9 @@
-describe HaxeCliProxy::CompileOption do
+describe Haxe::Cli::Proxy::CompileOption do
   describe 'Class Builder' do
-    Builder = HaxeCliProxy::CompileOption::Builder
-    Constants = HaxeCliProxy::Constants
-    NotExistsCompileRequiredKeys = HaxeCliProxy::Error::NotExistsCompileRequiredKeys
-    UnknownCompileTarget = HaxeCliProxy::Error::UnknownCompileTarget
+    Builder = Haxe::Cli::Proxy::CompileOption::Builder
+    Constants = Haxe::Cli::Proxy::Constants
+    NotExistsCompileRequiredKeys = Haxe::Cli::Proxy::Error::NotExistsCompileRequiredKeys
+    UnknownCompileTarget = Haxe::Cli::Proxy::Error::UnknownCompileTarget
 
     subject { @builder.to_s }
 

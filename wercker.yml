@@ -1,4 +1,4 @@
-box: ruby
+box: ruby:2.2.2
 build:
   steps:
     - script:

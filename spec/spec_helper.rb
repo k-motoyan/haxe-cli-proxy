@@ -1,11 +1,11 @@
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/spec/'
+if ENV['CODECLIMATE_REPO_TOKEN']
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+else
+  require 'simplecov'
+  SimpleCov.start { add_filter '/spec/' }
 end
-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'haxe_cli_proxy'
+require 'haxe-cli-proxy'

@@ -11,7 +11,7 @@ HaxeCliProxy is haxe command line client for ruby.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'haxe_cli_proxy'
+gem 'haxe-cli-proxy'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install haxe_cli_proxy
+    $ gem install haxe-cli-proxy
 
 ## License
 
