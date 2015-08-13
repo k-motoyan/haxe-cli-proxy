@@ -57,6 +57,7 @@ module Haxe
           ##
           # Execute haxe compile command.
           #
+          # @param [String] project_dir compile target project directory.
           # @param [Hash] options compile options.
           #                       if uses hxml, give option parameter such as...
           #                         {
@@ -75,22 +76,23 @@ module Haxe
           #                         }
           # @return [::Haxe::Cli::Command::Result] haxe compile command results.
           ##
-          def compile(options)
+          def compile(project_dir, options)
             builder = ::Haxe::Cli::Proxy::CompileOption::Builder.new(options)
-            execute "#{HAXE} #{builder}"
+            execute "cd #{project_dir} && #{HAXE} #{builder}"
           end
           
           private
 
           def execute(command)
-            Result.new Open3.capture3(command)
+            Result.new command, Open3.capture3(command)
           end
         end
 
         class Result
-          attr_reader :stdout, :stderr, :status
+          attr_reader :exec_command, :stdout, :stderr, :status
 
-          def initialize(open3_captured)
+          def initialize(exec_command, open3_captured)
+            @exec_command = exec_command
             @stdout, @stderr, @status = open3_captured
           end
         end

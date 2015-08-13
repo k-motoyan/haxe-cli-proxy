@@ -33,14 +33,18 @@ describe Haxe::Cli::Proxy::Command do
         { main: 'Mina', target: Haxe::Cli::Proxy::Constants::TARGET_JS, output: 'output' }
       end
 
+      let(:project_dir) { '/path/to/project' }
+
       it 'should returns Haxe::Cli::Proxy::Command::Result' do
-        expect(Haxe::Cli::Proxy::Command.compile(options)).to be_kind_of(Haxe::Cli::Proxy::Command::Result)
+        actual = Haxe::Cli::Proxy::Command.compile(project_dir, options)
+        expect(actual).to be_kind_of(Haxe::Cli::Proxy::Command::Result)
       end
     end
   end
 
   describe Haxe::Cli::Proxy::Command::Result do
-    subject { Haxe::Cli::Proxy::Command::Result.new %w(a b c) }
+    subject { Haxe::Cli::Proxy::Command::Result.new 'ls -al', %w(a b c) }
+    it { should respond_to(:exec_command) }
     it { should respond_to(:stdout) }
     it { should respond_to(:stderr) }
     it { should respond_to(:status) }
